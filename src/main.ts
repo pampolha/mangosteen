@@ -2,10 +2,9 @@
 
 import { spawn } from "child_process";
 import Logger from "./models/Logger";
+import { program } from "commander";
 
-const { program } = require('commander');
-
-const teste = spawn('node teste.js', { shell: true });
+const teste = spawn("node teste.js", { shell: true });
 const testeLogger = new Logger(teste, { logMetaEvents: true });
 testeLogger.enable();
 

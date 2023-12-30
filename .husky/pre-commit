@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+echo [Husky] running pre-commit lint...
+npm run prettier --silent -- --log-level warn || true
+npm run eslint --silent
+echo [Husky] pre-commit linting done
