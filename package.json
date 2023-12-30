@@ -6,8 +6,10 @@
   "scripts": {
     "start": "tsc && mangosteen",
     "prepare": "husky install",
-    "prettier": "prettier . --write",
-    "eslint": "eslint . --fix"
+    "lint": "lint-staged"
+  },
+  "lint-staged": {
+    "*.ts": ["prettier . --write --log-level warn", "eslint . --fix"]
   },
   "bin": "./out/main.js",
   "repository": {
@@ -41,6 +43,7 @@
     "eslint-plugin-n": "^16.6.0",
     "eslint-plugin-promise": "^6.1.1",
     "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
     "prettier": "^3.1.1"
   }
 }
