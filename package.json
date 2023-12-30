@@ -1,0 +1,32 @@
+{
+  "name": "@pampolha/mangosteen",
+  "version": "0.0.1",
+  "description": "Resource monitor for node scripts",
+  "main": "src/main.ts",
+  "scripts": {
+    "start": "tsc && mangosteen"
+  },
+  "bin": "./out/main.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pampolha/mangosteen.git"
+  },
+  "keywords": [
+    "logging",
+    "resource",
+    "monitor"
+  ],
+  "author": "Gabriel Pampolha | pampolhag@gmail.com",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/pampolha/mangosteen/issues"
+  },
+  "homepage": "https://github.com/pampolha/mangosteen#readme",
+  "dependencies": {
+    "commander": "^11.1.0",
+    "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.6"
+  }
+}
