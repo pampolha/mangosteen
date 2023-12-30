@@ -1,11 +1,12 @@
 #! /usr/bin/env node
 
 import { spawn } from "child_process";
-import { attachLogger } from "./logger";
+import Logger from "./models/Logger";
 
 const { program } = require('commander');
 
 const teste = spawn('node teste.js', { shell: true });
-attachLogger(teste);
+const testeLogger = new Logger(teste, { logMetaEvents: true });
+testeLogger.enable();
 
 program.parse();
