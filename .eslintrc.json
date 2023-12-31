@@ -19,7 +19,7 @@
     "linebreak-style": ["error", "unix"],
     "quotes": ["error", "double"],
     "semi": ["error", "always"],
-    "no-magic-numbers": "error"
+    "no-magic-numbers": "off"
   },
   "ignorePatterns": ["out"]
 }
