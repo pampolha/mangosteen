@@ -39,9 +39,6 @@ class Logger {
       this.process.on("disconnect", () =>
         this.logProcessEvent("Process disconnected"),
       );
-      this.process.on("error", (err) =>
-        this.logProcessError("Error occured", err),
-      );
       this.process.on("exit", (code, signal) =>
         this.logProcessEvent("Process exited", { code, signal }),
       );
@@ -52,9 +49,19 @@ class Logger {
     },
   };
 
-  private logProcessPipe = () => {
+  private logProcessPipes = () => {
+    this.process.on("error", (err) =>
+      this.logProcessError("Error occured", err),
+    );
     this.process.stdout?.on("data", (chunk) =>
-      this.logProcessEvent("data", Buffer.from(chunk).toString()),
+      this.logProcessEvent("stdout:", {
+        message: Buffer.from(chunk).toString(),
+      }),
+    );
+    this.process.stderr?.on("data", (chunk) =>
+      this.logProcessEvent("stderr:", {
+        message: Buffer.from(chunk).toString(),
+      }),
     );
   };
 
@@ -71,7 +78,7 @@ class Logger {
       this.callableOptions[key as keyof typeof this.options]();
     }
 
-    this.logProcessPipe();
+    this.logProcessPipes();
   };
 
   disable = () => this.process.removeAllListeners();
