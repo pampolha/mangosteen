@@ -9,7 +9,7 @@ class Logger {
     throw new Error("Method not implemented.");
   }
   private process: ChildProcessWithoutNullStreams;
-  private options?: LoggerOptions;
+  private optionsToCall?: string[] | undefined;
 
   private logProcessEvent = (
     message: string,
@@ -70,12 +70,14 @@ class Logger {
     options?: LoggerOptions,
   ) {
     this.process = process;
-    this.options = options;
+    this.optionsToCall = Object.entries(<object>options)
+      .filter(([, value]) => value)
+      .map(([key]) => key);
   }
 
   enable = () => {
-    for (const key in this.options) {
-      this.callableOptions[key as keyof typeof this.options]();
+    for (const key of this.optionsToCall || []) {
+      this.callableOptions[key as keyof LoggerOptions]();
     }
 
     this.logProcessPipes();
