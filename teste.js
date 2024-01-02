@@ -23,10 +23,8 @@ function recursiveFib(n) {
   }
 }
 
-setInterval(() => {
-  console.time("logtime");
-  fastDoublingFib(Number.MAX_SAFE_INTEGER);
-  recursiveFib(34);
-  recursiveFib(39);
-  console.timeEnd("logtime");
-}, 1000);
+console.time("logtime");
+fastDoublingFib(Number.MAX_SAFE_INTEGER);
+recursiveFib(34);
+recursiveFib(39);
+console.timeEnd("logtime");

@@ -9,7 +9,10 @@
     "lint": "lint-staged"
   },
   "lint-staged": {
-    "*.ts": ["prettier . --write --log-level warn", "eslint . --fix"]
+    "*.ts": [
+      "prettier . --write --log-level warn",
+      "eslint . --fix"
+    ]
   },
   "bin": "./out/main.js",
   "repository": {
